@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JetDiff"
         mc:Ignorable="d"
-        Title="MainWindow" Height="185.333" Width="429.666">
+        Title="MainWindow" Height="185.333" Width="429.666"
+        DragEnter="MainWindow_OnDragEnter"
+        DragDrop.Drop="MainWindow_OnDrop">
     <Grid>
         <TextBox Margin="10,10,10,0" Height="18" VerticalAlignment="Top" Name="LeftPath"/>
         <TextBox Margin="10,33,10,0" Height="18" VerticalAlignment="Top" Name="RightPath"/>

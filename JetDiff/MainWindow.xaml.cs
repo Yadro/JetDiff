@@ -38,5 +38,19 @@ namespace JetDiff
             };
             Process.Start(startInfo);
         }
+
+        private void MainWindow_OnDragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effects = DragDropEffects.All;
+            else
+                e.Effects = DragDropEffects.None;
+        }
+
+        private void MainWindow_OnDrop(object sender, DragEventArgs e)
+        {
+            var data = (string[]) e.Data.GetData("FileDrop", false);
+            LeftPath.Text = data.FirstOrDefault();
+        }
     }
 }

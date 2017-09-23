@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JetDiff"
         mc:Ignorable="d"
-        Title="Show Diff" Height="143.833" Width="429.666">
+        Title="Show Diff" Height="151.833" Width="429.666">
     <Grid>
-        <TextBox Margin="10,10,10,0" Height="20" VerticalAlignment="Top"
+        <TextBox Margin="10,10,10,0" Height="28" VerticalAlignment="Top"
                  Name="LeftPath"
                  PreviewDragOver="OnDragOver"
                  PreviewDragEnter="OnDragEnter"
                  PreviewDrop="LeftPath_OnDrop"
                  AllowDrop="True"/>
-        
-        <TextBox Margin="10,35,10,0" Height="20" VerticalAlignment="Top"
+
+        <TextBox Margin="10,43,10,0" Height="27" VerticalAlignment="Top"
                  Name="RightPath"
                  PreviewDragOver="OnDragOver"
                  PreviewDragEnter="OnDragEnter"
@@ -24,5 +24,8 @@
                 Click="Button_Click"
                 Content="Show Diff">
         </Button>
+
+        <TextBox Margin="10,0,194,10"
+                 Text="{Binding Source={StaticResource Settings}, Path=Default.DiffPath}" Height="20" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

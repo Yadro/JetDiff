@@ -21,12 +21,10 @@ namespace JetDiff
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            this.AllowDrop = true;
-            // LeftPath.AllowDrop = true;
-            // RightPath.AllowDrop = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,7 +40,12 @@ namespace JetDiff
             Process.Start(startInfo);
         }
 
-        private void MainWindow_OnDragEnter(object sender, DragEventArgs e)
+        private void OnDragOver(object sender, DragEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void OnDragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effects = DragDropEffects.All;
@@ -50,17 +53,20 @@ namespace JetDiff
                 e.Effects = DragDropEffects.None;
         }
 
-        private void MainWindow_OnDrop(object sender, DragEventArgs e)
+        private void LeftPath_OnDrop(object sender, DragEventArgs e)
+        {
+            LeftPath.Text = GetFilePath(e);
+        }
+
+        private void RightPath_OnDrop(object sender, DragEventArgs e)
+        {
+            RightPath.Text = GetFilePath(e);
+        }
+
+        private string GetFilePath(DragEventArgs e)
         {
             var data = (string[]) e.Data.GetData("FileDrop", false);
-            if (data != null)
-            {
-                var path = data.First();
-                if (LeftPath.Text.Length == 0)
-                    LeftPath.Text = path;
-                else
-                    RightPath.Text = path;
-            }
+            return data != null ? data.First() : "";
         }
     }
 }

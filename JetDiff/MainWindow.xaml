@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JetDiff"
         mc:Ignorable="d"
-        Title="MainWindow" Height="185.333" Width="429.666"
+        Title="MainWindow" Height="134.333" Width="429.666"
+        
         DragEnter="MainWindow_OnDragEnter"
-        DragDrop.Drop="MainWindow_OnDrop">
+        Drop="MainWindow_OnDrop">
     <Grid>
-        <TextBox Margin="10,10,10,0" Height="18" VerticalAlignment="Top" Name="LeftPath"/>
-        <TextBox Margin="10,33,10,0" Height="18" VerticalAlignment="Top" Name="RightPath"/>
+        <TextBox Margin="10,10,10,0" Height="20" VerticalAlignment="Top" Name="LeftPath" DragEnter="MainWindow_OnDragEnter" Drop="MainWindow_OnDrop" AllowDrop="True"/>
+        <TextBox Margin="10,35,10,0" Height="20" VerticalAlignment="Top" Name="RightPath" Drop="MainWindow_OnDrop"/>
         <Button Margin="0,0,10,10" Height="28" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="108" Click="Button_Click" Content="Show Diff"></Button>
     </Grid>
 </Window>

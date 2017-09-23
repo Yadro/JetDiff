@@ -24,6 +24,9 @@ namespace JetDiff
         public MainWindow()
         {
             InitializeComponent();
+            this.AllowDrop = true;
+            // LeftPath.AllowDrop = true;
+            // RightPath.AllowDrop = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,7 +53,14 @@ namespace JetDiff
         private void MainWindow_OnDrop(object sender, DragEventArgs e)
         {
             var data = (string[]) e.Data.GetData("FileDrop", false);
-            LeftPath.Text = data.FirstOrDefault();
+            if (data != null)
+            {
+                var path = data.First();
+                if (LeftPath.Text.Length == 0)
+                    LeftPath.Text = path;
+                else
+                    RightPath.Text = path;
+            }
         }
     }
 }
